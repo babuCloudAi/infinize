@@ -98,13 +98,9 @@ export default function FileUpload({
                         className={classes.infinize__logoUploadCardContent}
                     >
                         <Box mt={1}>
-                            <Image
-                                src="/brandKit/uploadfileicon.svg"
-                                alt="Upload icon"
-                                width={50}
-                                height={20}
-                                priority
-                            />
+                        <InfinizeIcon
+                        icon="vuesax/outline/document-upload" 
+                    />
                         </Box>
                         <Box>
                             <Typography
