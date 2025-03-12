@@ -13,19 +13,20 @@ import {RouteProvider} from '@/context/route';
 import AppLoader from '@/components/common/loader/appLoader';
 
 export default function ClientLayout({children}) {
-    const [loading, setLoading] = useState(() => {
-        return sessionStorage.getItem('hasLoaded') ? false : true;
-    });
-
+    const [loading, setLoading] = useState(true);
+ 
     useEffect(() => {
-        if (!sessionStorage.getItem('hasLoaded')) {
-            setLoading(true);
-            const timer = setTimeout(() => {
+        if (typeof window !== 'undefined') {
+            const hasLoaded = sessionStorage.getItem('hasLoaded');
+            if (hasLoaded) {
                 setLoading(false);
-                sessionStorage.setItem('hasLoaded', 'true');
-            }, 1000);
-
-            return () => clearTimeout(timer);
+            } else {
+                setLoading(true);
+                setTimeout(() => {
+                    setLoading(false);
+                    sessionStorage.setItem('hasLoaded', 'true');
+                }, 1000);
+            }
         }
     }, []);
     return (
