@@ -12,6 +12,9 @@ import {
 import Image from 'next/image';
 import classes from '../../brandKit/brandKit.module.css';
 import {InfinizeIcon} from '../../common';
+import uploadImg from '../../../../public/brandkit/file.svg'
+import uploadFileImg from '../../../../public/brandkit/uploadfileIcon.svg'
+
 
 export default function FileUpload({
     file,
@@ -98,9 +101,13 @@ export default function FileUpload({
                         className={classes.infinize__logoUploadCardContent}
                     >
                         <Box mt={1}>
-                        <InfinizeIcon
-                        icon="vuesax/outline/document-upload" 
-                    />
+                            <Image
+                                src={uploadFileImg}
+                                alt="Upload icon"
+                                width={50}
+                                height={20}
+                                priority
+                            />
                         </Box>
                         <Box>
                             <Typography
@@ -146,7 +153,7 @@ export default function FileUpload({
                 >
                     <input {...getInputProps()} />
                     <Image
-                        src="/brandKit/file.svg"
+                        src={uploadImg}
                         alt="Upload icon"
                         width={70}
                         height={30}
